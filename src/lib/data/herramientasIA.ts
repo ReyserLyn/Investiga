@@ -56,7 +56,6 @@ export function getHerramientasIA(): CardIA[] {
 
 export function getTiposIA(): string[] {
   return [
-    "Generación de Texto",
     "Búsqueda Académica",
     "Gestión de Referencias",
     "Análisis de Documentos",

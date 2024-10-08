@@ -14,33 +14,33 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function ToolsIA() {
-  const tools = getHerramientasIA();
-  const tiposIA = getTiposIA();
+  const aiTools = getHerramientasIA();
+  const aiTypes = getTiposIA();
 
   return (
     <section
       id="features"
       className="container py-24 sm:py-32 flex flex-col gap-3"
     >
-      <h2 className="text-3xl text-center lg:text-4xl font-bold md:text-center">
-        <span className="inline bg-gradient-to-r from-[#eebf8a] to-[#fc9d4c] text-transparent bg-clip-text">
-          Explora{" "}
-        </span>
-        las herramientas{" "}
-        <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-          IA
+      <h2 className="text-3xl text-center lg:text-4xl font-semibold md:text-center">
+        Las herramientas más{" "}
+        <span className="bg-gradient-to-r from-[#ffbf5e] to-[#fc9d4c] text-transparent bg-clip-text font-bold">
+          avanzadas de IA
         </span>
       </h2>
       <p className=" text-center md:w-3/4 mx-auto text-lg text-muted-foreground">
-        Explora y domina cada IA aplicable a la investigación científica
+        Aprovecha al máximo cada herramienta de IA para transformar tu
+        investigación científica.{" "}
       </p>
 
-      <div className="flex flex-wrap items-center justify-center gap-4 my-3">
-        {tiposIA.map((tipo: string) => (
-          <div key={tipo}>
-            <Badge variant="secondary" className="text-sm">
-              {tipo}
-            </Badge>
+      <div className="flex flex-wrap items-center justify-center gap-4 my-3 ">
+        {aiTypes.map((aiType: string) => (
+          <div key={aiType}>
+            <Link href="/herramientas">
+              <Badge className="bg-primary-black hover:bg-[#0D1522] py-1 px-4 hover:cursor-pointer">
+                {aiType}
+              </Badge>
+            </Link>
           </div>
         ))}
       </div>
@@ -53,12 +53,12 @@ export default function ToolsIA() {
           }}
           plugins={[
             Autoplay({
-              delay: 2000,
+              delay: 2250,
             }),
           ]}
         >
           <CarouselContent>
-            {tools.map(({ title, description, image }) => (
+            {aiTools.map(({ title, description, image }) => (
               <CarouselItem
                 key={title}
                 className="basis-full md:basis-1/2 lg:basis-1/3"
@@ -70,11 +70,11 @@ export default function ToolsIA() {
                     </p>
                     <p className="text-sm text-gray-600 px-2 ">{description}</p>
                   </div>
-                  <div className="flex items-center justify-center h-64 my-auto">
+                  <div className="flex items-center justify-center h-56 my-auto">
                     <Image
                       className="rounded-xl "
-                      height={250}
-                      width={250}
+                      height={200}
+                      width={200}
                       alt={title}
                       src={image}
                       loading="lazy"
@@ -87,10 +87,14 @@ export default function ToolsIA() {
         </Carousel>
       </div>
       <div className="flex justify-center my-3">
-        <Button variant="outline" className="shadow-md" asChild>
+        <Button
+          variant="ghost"
+          className="shadow-md transition-transform duration-300 ease-in-out transform hover:bg-primary hover:text-white hover:font-medium hover:scale-105 hover:shadow-lg"
+          asChild
+        >
           <Link href="/herramientas">
             <GalleryVerticalEnd size={18} className="mr-2" />
-            Ver todos
+            Explorar todos
           </Link>
         </Button>
       </div>

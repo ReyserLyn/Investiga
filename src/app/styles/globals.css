@@ -11,6 +11,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
     --primary: 189 90% 46%;
+    --primary-black: 218 40% 18%;
     --primary-foreground: 0 0% 98%;
     --primary-background: 198 99% 39%;
     --secondary: 28 97% 64%;
@@ -32,7 +33,6 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
   }
-
   /* .dark {
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;

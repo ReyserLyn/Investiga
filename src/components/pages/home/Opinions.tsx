@@ -1,12 +1,14 @@
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable react-hooks/exhaustive-deps */
-
 "use client";
 
-import { cn } from "@/lib/utils";
-import { User } from "lucide-react";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+import { UserRound } from "lucide-react";
 
 type Opinion = {
   text: string;
@@ -14,7 +16,7 @@ type Opinion = {
   label: string;
 };
 
-const OPINIONS: Opinion[] = [
+const opinions: Opinion[] = [
   {
     text: "“La integración de herramientas de IA en mi investigación ha sido un cambio total. Ahora puedo encontrar y organizar información de manera mucho más eficiente.”",
     user: "María Fernández",
@@ -33,28 +35,8 @@ const OPINIONS: Opinion[] = [
 ];
 
 export default function Opinions() {
-  const [index, setIndex] = useState(0);
-
-  const paginate = (newDirection: number) => {
-    if (index === 0 && newDirection === -1) {
-      setIndex(OPINIONS.length - 1);
-    } else if (index === OPINIONS.length - 1 && newDirection === 1) {
-      setIndex(0);
-    } else {
-      setIndex((prevPage) => prevPage + newDirection);
-    }
-  };
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      paginate(1);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [index]);
-
   return (
-    <section className="w-full bg-muted/50 flex flex-col items-center justify-center gap-10 py-20 px-6">
+    <section className="w-full flex flex-col items-center justify-center gap-10 py-24 sm:py-32 px-6">
       <Image
         src="/logo.svg"
         alt="Logo de Investiga"
@@ -63,32 +45,39 @@ export default function Opinions() {
         className="w-full max-w-40"
       />
 
-      <h1 className="text-4xl text-center w-full max-w-6xl font-medium">
-        {OPINIONS[index].text}
-      </h1>
-      <div className="flex flex-col items-center gap-4">
-        <User className="w-16 h-16" />
-        <span className="font-semibold">{OPINIONS[index].user}</span>
-        <span className="text-sm text-muted-foreground">
-          {OPINIONS[index].label}
-        </span>
-      </div>
-      <div className="flex items-center justify-center gap-4">
-        {OPINIONS.map((_, i) => (
-          <button
-            type="button"
-            key={i}
-            onClick={() => {
-              setIndex(i);
-            }}
-            className={cn(
-              "w-4 h-4 rounded-full bg-primary-background transition-all",
-              { "w-10": i === index }
-            )}
-          >
-            <span className="sr-only">{i + 1}</span>
-          </button>
-        ))}
+      <div className="mx-auto container">
+        <Carousel
+          opts={{
+            loop: true,
+            align: "start",
+          }}
+          plugins={[
+            Autoplay({
+              delay: 5000,
+            }),
+          ]}
+        >
+          <CarouselContent>
+            {opinions.map(({ text, user, label }) => (
+              <CarouselItem
+                key={text}
+                className="container basis-full flex flex-col gap-10"
+              >
+                <h3 className="text-xl sm:text-2xl md:text-3xl sm:px-14 text-center w-full font-light italic">
+                  {text}
+                </h3>
+
+                <div className="flex flex-col items-center gap-3">
+                  <UserRound className="w-16 h-16" />
+                  <span className="font-semibold">{user}</span>
+                  <span className="text-sm text-center text-muted-foreground">
+                    {label}
+                  </span>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
       </div>
     </section>
   );

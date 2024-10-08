@@ -1,11 +1,17 @@
 import OrbitingCircles from "@/components/ui/orbiting-circles";
+import Image from "next/image";
 
 export function OrbitingIAS() {
   return (
-    <div className="relative flex h-[450px] w-[800px] flex-col items-center justify-center overflow-hidden">
-      <span className="pointer-events-none h-[85px] whitespace-pre-wrap bg-gradient-to-r from-[#f5c996] to-[#fc9d4c] text-transparent bg-clip-text text-center text-7xl font-semibold leading-none ">
-        Investiga
-      </span>
+    <div className="relative flex h-[450px] w-[800px] flex-col items-center justify-center z-40 scale-[85%] sm:scale-100">
+      <Image
+        src="/logo.svg"
+        width="0"
+        height="0"
+        alt="Logo de Investiga"
+        className="lg:w-[85%] w-[50%] h-auto"
+        priority
+      />
 
       <OrbitingCircles
         className="size-[40px] border-none bg-transparent"

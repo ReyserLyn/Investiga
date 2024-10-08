@@ -25,16 +25,17 @@ const puntosFuertes = [
   },
   {
     title: "Comparación Precisa",
-    description: "Compara artículos y datos de manera precisa y rápida.",
-    label: "Ver más",
+    description:
+      "Analiza artículos y datos rápidamente para tomar decisiones informadas.",
+    label: "Descubre cómo",
     color: "4883FF",
     icon: ChartBarStacked,
   },
   {
     title: "Aprendizaje Profundo",
     description:
-      "Domina técnicas de investigación con nuestros cursos especializados.",
-    label: "Aprender más",
+      "Domina las técnicas de investigación más efectivas con nuestros cursos especializados.",
+    label: "Aprende más",
     color: "C11574",
     icon: BookCheck,
   },
@@ -46,17 +47,17 @@ export default function PuntosFuertes() {
       id="puntosFuertes"
       className="relative py-16 lg:py-24 xl:py-32 bg-white overflow-hidden"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 className="md:w-3/4 mx-auto text-3xl md:text-4xl font-bold ">
+      <div className="container mx-auto px-4 sm:px-20 lg:px-8 text-center">
+        <h2 className="md:w-3/4 mx-auto text-3xl md:text-4xl font-semibold">
           Ventajas{" "}
-          <span className="bg-gradient-to-b from-primary/40 to-primary text-transparent bg-clip-text">
-            Exclusivas
+          <span className="bg-gradient-to-b from-primary/40 to-primary text-transparent bg-clip-text font-bold">
+            Únicas
           </span>
         </h2>
 
         <p className="md:w-3/4 mx-auto mt-4 mb-8 text-xl text-muted-foreground">
-          Descubre las herramientas clave que potencian tu investigación
-          científica.
+          Impulsa tu investigación al siguiente nivel con herramientas diseñadas
+          para el éxito.
         </p>
 
         <div className="grid lg:grid-cols-3 gap-12 mt-12 lg:mt-0 text-left">
