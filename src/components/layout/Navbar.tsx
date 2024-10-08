@@ -1,14 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { DropdownMenuProfile } from "../components/DropdownMenuProfile";
+import DropdownMenuProfile from "../components/DropdownMenuProfile";
 import NavbarOptions from "../components/NavbarOptions";
 import SideBarPhone from "../components/SidebarPhone";
 
-export default function NavBar() {
+export default function Navbar() {
   return (
-    <header className="w-full bg-white drop-shadow-sm z-50">
-      <div className="w-full container md:container mx-auto flex h-14 md:h-16 items-center px-4 md:px-6 bg-white">
+    <header className="w-full bg-white drop-shadow-sm z-50 mt-1">
+      <div className="container md:container flex h-14 md:h-16 items-center px-4 md:px-6">
         <SideBarPhone />
 
         <Link

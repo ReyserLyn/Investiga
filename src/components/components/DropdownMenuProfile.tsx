@@ -1,5 +1,3 @@
-import { User2 } from "lucide-react";
-
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -10,6 +8,7 @@ import {
 import pb from "@/lib/pocketbase";
 import { getImageUrl } from "@/lib/utils";
 import { UsersResponse } from "@/types/pocketbase-types";
+import { User2 } from "lucide-react";
 import { cookies } from "next/headers";
 import { use } from "react";
 import AuthLogin from "./AuthLogin";
@@ -24,7 +23,7 @@ const getUser = async () => {
   return result as UsersResponse;
 };
 
-export function DropdownMenuProfile() {
+export default function DropdownMenuProfile() {
   const user = use(getUser());
 
   if (!user) {

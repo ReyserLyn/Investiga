@@ -1,9 +1,8 @@
 import {
-  BrainCircuit,
   House,
   LucideIcon,
   Mail,
-  Newspaper,
+  Share2,
   SquareChartGantt,
   TvMinimal,
   User,
@@ -11,19 +10,19 @@ import {
   Wrench,
 } from "lucide-react";
 
-type Menu = {
+type SidebarItem = {
   href: string;
   label: string;
   active: boolean;
   icon: LucideIcon;
 };
 
-type Group = {
+type Section = {
   groupLabel: string;
-  menus: Menu[];
+  menus: SidebarItem[];
 };
 
-export function getSidebarOptions(pathname: string): Group[] {
+export function getSidebarOptions(pathname: string): Section[] {
   return [
     {
       groupLabel: "",
@@ -52,32 +51,32 @@ export function getSidebarOptions(pathname: string): Group[] {
           icon: SquareChartGantt,
         },
         {
-          href: "/herramientas/compartir-herramienta",
-          label: "Compartir una herarmienta",
-          active: pathname === "/herramientas/compartir-herramienta",
-          icon: BrainCircuit,
-        },
-        {
           href: "/planes",
           label: "Planes",
           active: pathname.includes("/planes"),
           icon: Wallet,
         },
-      ],
-    },
-    {
-      groupLabel: "Noticias",
-      menus: [
         {
-          href: "/blog",
-          label: "Blog",
-          active: pathname === "/",
-          icon: Newspaper,
+          href: "/herramientas/compartir-herramienta",
+          label: "Compartir una herarmienta",
+          active: pathname === "/herramientas/compartir-herramienta",
+          icon: Share2,
         },
       ],
     },
+    // {
+    //   groupLabel: "Noticias",
+    //   menus: [
+    //     {
+    //       href: "/blog",
+    //       label: "Blog",
+    //       active: pathname === "/",
+    //       icon: Newspaper,
+    //     },
+    //   ],
+    // },
     {
-      groupLabel: "Soporte",
+      groupLabel: "Conócenos",
       menus: [
         {
           href: "/soporte",

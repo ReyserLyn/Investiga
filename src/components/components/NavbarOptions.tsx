@@ -10,7 +10,7 @@ import {
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Soporte from "./Soporte";
+import Conocenos from "./Conocenos";
 
 export default function NavbarOptions() {
   const pathname = usePathname();
@@ -39,7 +39,7 @@ export default function NavbarOptions() {
               pathname === "/herramientas" ? "text-primary" : ""
             )}
           >
-            Herramientas
+            Herramientas IA
           </NavigationMenuLink>
         </Link>
 
@@ -55,7 +55,7 @@ export default function NavbarOptions() {
           </NavigationMenuLink>
         </Link>
 
-        <Link href="/blog" legacyBehavior passHref prefetch={false}>
+        {/* <Link href="/blog" legacyBehavior passHref prefetch={false}>
           <NavigationMenuLink
             className={cn(
               buttonVariants({ variant: "linkHover2" }),
@@ -66,9 +66,9 @@ export default function NavbarOptions() {
           >
             Blog
           </NavigationMenuLink>
-        </Link>
+        </Link> */}
 
-        <Link
+        {/* <Link
           href="/herramientas/compartir-herramienta"
           legacyBehavior
           passHref
@@ -85,7 +85,7 @@ export default function NavbarOptions() {
           >
             Compartir una herramienta
           </NavigationMenuLink>
-        </Link>
+        </Link> */}
 
         <Link href="/planes" legacyBehavior passHref prefetch={false}>
           <NavigationMenuLink
@@ -100,7 +100,7 @@ export default function NavbarOptions() {
           </NavigationMenuLink>
         </Link>
 
-        <Soporte />
+        <Conocenos />
       </NavigationMenuList>
     </NavigationMenu>
   );

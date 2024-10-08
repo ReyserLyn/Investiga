@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export default function Soporte() {
+export default function Conocenos() {
   const pathname = usePathname();
 
   return (
@@ -26,7 +26,7 @@ export default function Soporte() {
         Conócenos
       </NavigationMenuTrigger>
       <NavigationMenuContent>
-        <div className="grid w-[200px] p-2">
+        <div className="grid w-[180px] p-2">
           <Link
             href="/soporte#quienes-somos"
             legacyBehavior
