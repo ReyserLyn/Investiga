@@ -1,6 +1,6 @@
 import { ReadonlyRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies";
 import { NextRequest, NextResponse } from "next/server";
-import pbClient from "./utils/pocketbase";
+import pbClient from "./lib/pocketbase";
 
 const AUTH_PATHS = ["/login", "/register"];
 const NO_AUTH_PATHS = ["/user"];
