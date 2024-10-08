@@ -1,6 +1,7 @@
 import {
   DegreesResponse,
   InstitutionsResponse,
+  TagsResponse,
   TypedPocketBase,
   UsersResponse,
 } from "@/types/pocketbase-types";
@@ -113,6 +114,13 @@ export class DatabaseClient {
       console.error(error);
       throw new Error(errorMessage);
     }
+  }
+
+  public async getTags(): Promise<TagsResponse[]> {
+    return this.fetchCollection<TagsResponse>(
+      "tags",
+      "Error al obtener los tags"
+    );
   }
 
   async isAuthenticated(cookieStore: ReadonlyRequestCookies) {
