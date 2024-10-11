@@ -16,3 +16,7 @@ export const getImageUrl = ({
   collectionId: string;
   id: string;
 }) => `${POCKET_BASE_URL}/api/files/${collectionId}/${id}/${url}`;
+
+export function capitalizeFirstLetter(string: string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}

@@ -2,6 +2,7 @@ import {
   DegreesResponse,
   InstitutionsResponse,
   TagsResponse,
+  ToolsIaResponse,
   TypedPocketBase,
   UsersResponse,
 } from "@/types/pocketbase-types";
@@ -86,41 +87,52 @@ export class DatabaseClient {
 
   // Get Institutions
   public async getInstitutions(): Promise<InstitutionsResponse[]> {
-    return this.fetchCollection<InstitutionsResponse>(
-      "institutions",
-      "Error al obtener las instituciones"
-    );
+    try {
+      const institutions = await this.client
+        .collection("institutions")
+        .getFullList({ sort: "-name" });
+      return institutions as InstitutionsResponse[];
+    } catch (error) {
+      console.error("Error al obtener las instituciones", error);
+      throw new Error("Error al obtener las instituciones");
+    }
   }
 
   // Get Degrees
   public async getDegrees(): Promise<DegreesResponse[]> {
-    return this.fetchCollection<DegreesResponse>(
-      "degrees",
-      "Error al obtener los grados académicos"
-    );
-  }
-
-  // Helper method to fetch collection data
-  private async fetchCollection<T>(
-    collectionName: string,
-    errorMessage: string
-  ): Promise<T[]> {
     try {
-      const result = await this.client
-        .collection(collectionName)
+      const degrees = await this.client
+        .collection("degrees")
         .getFullList({ sort: "-name" });
-      return result as T[];
+      return degrees as DegreesResponse[];
     } catch (error) {
-      console.error(error);
-      throw new Error(errorMessage);
+      console.error("Error al obtener los grados académicos", error);
+      throw new Error("Error al obtener los grados académicos");
     }
   }
 
+  // Get Tools
+  public async getTools(): Promise<ToolsIaResponse[]> {
+    try {
+      const tools = await this.client.collection("tools_ia").getFullList({
+        expand: "likes, tags",
+      });
+      return tools as ToolsIaResponse[];
+    } catch (error) {
+      console.error("Error al obtener las herramientas IA", error);
+      throw new Error("Error al obtener las herramientas IA");
+    }
+  }
+
+  // Get Tags
   public async getTags(): Promise<TagsResponse[]> {
-    return this.fetchCollection<TagsResponse>(
-      "tags",
-      "Error al obtener los tags"
-    );
+    try {
+      const tags = await this.client.collection("tags").getFullList();
+      return tags as TagsResponse[];
+    } catch (error) {
+      console.error("Error al obtener los tags", error);
+      throw new Error("Error al obtener los tags");
+    }
   }
 
   async isAuthenticated(cookieStore: ReadonlyRequestCookies) {
