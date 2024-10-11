@@ -140,6 +140,9 @@ export type ToolsIaRecord = {
   page_url?: string;
   tags?: RecordIdString[];
   video_presentation?: string;
+  expand?: {
+    tags: TagsResponse[];
+  };
 };
 
 export type UsersRecord = {
