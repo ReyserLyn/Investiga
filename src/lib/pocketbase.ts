@@ -1,4 +1,5 @@
 import {
+  CoursesResponse,
   DegreesResponse,
   InstitutionsResponse,
   TagsResponse,
@@ -121,6 +122,20 @@ export class DatabaseClient {
     } catch (error) {
       console.error("Error al obtener las herramientas IA", error);
       throw new Error("Error al obtener las herramientas IA");
+    }
+  }
+
+  // Get Courses
+  async getCourses(): Promise<CoursesResponse[]> {
+    try {
+      const courses = await this.client.collection("courses").getFullList({
+        expand: "tags",
+      });
+
+      return courses as CoursesResponse[];
+    } catch (error) {
+      console.error("Error al obtener los cursos", error);
+      throw new Error("Error al obtener todos los cursos");
     }
   }
 
