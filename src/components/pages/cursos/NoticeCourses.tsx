@@ -16,7 +16,7 @@ export default function NoticeCourses() {
 
           <Link
             className="bg-white text-primary text-xl font-semibold rounded-2xl py-3 w-[60%] text-center mt-5"
-            href="/"
+            href="/planes"
           >
             Explorar Planes
           </Link>
