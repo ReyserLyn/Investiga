@@ -3,7 +3,6 @@
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { CoursesResponse } from "@/types/pocketbase-types";
-import Link from "next/link";
 import CourseCard from "./CourseCard";
 
 const courseTags: string[] = [
@@ -24,15 +23,13 @@ export default function InitialCourses({ courses }: InitialCoursesProps) {
           ¡Empieza tu viaje con nuestros primeros cursos y crece con nosotros!
         </span>
 
-        {courses.length > 0 && ( // Renderiza solo si hay cursos
+        {courses.length > 0 && (
           <div className="hidden sm:flex sm:flex-row gap-2">
             {courseTags.map((aiType: string) => (
               <div key={aiType}>
-                <Link href="/herramientas">
-                  <Badge className="bg-primary-black hover:bg-[#0D1522] py-1 px-4 hover:cursor-pointer">
-                    {aiType}
-                  </Badge>
-                </Link>
+                <Badge className="bg-primary-black hover:bg-[#0D1522] py-1 px-4 hover:cursor-pointer">
+                  {aiType}
+                </Badge>
               </div>
             ))}
           </div>
